@@ -55,6 +55,10 @@ function App() {
   const handleCloseModal = () => {
     setSelectedProject(null);
   };
+
+  const handleContactSectionOpen = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
   // -------------------------
 
   const visibleCertificates = showAllCertificates
@@ -125,7 +129,7 @@ function App() {
               showUserInfo={true}
               enableTilt={true}
               enableMobileTilt={false}
-              onContactClick={() => console.log('Contact clicked')}
+              onContactClick={handleContactSectionOpen}
             />
           </div>
         </div>
@@ -150,21 +154,21 @@ function App() {
                 <div className="flex flex-col sm:flex-row items-center sm:justify-between text-center sm:text-left gap-y-8 sm:gap-y-0 mb-4 w-full">
                   <div>
                     <h1 className="text-3xl md:text-4xl mb-1">
-                      20<span className="text-violet-500">+</span>
+                      5<span className="text-violet-500">+</span>
                     </h1>
                     <p>Project Finished</p>
                   </div>
                   <div>
                     <h1 className="text-3xl md:text-4xl mb-1">
-                      3<span className="text-violet-500">+</span>
+                      15<span className="text-violet-500">+</span>
                     </h1>
-                    <p>Years of Experience</p>
+                    <p>Technologies Mastered</p>
                   </div>
                   <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-once="true">
                     <h1 className="text-3xl md:text-4xl mb-1">
-                      3.81<span className="text-violet-500">/4.00</span>
+                      6.22<span className="text-violet-500"> CGPA</span>
                     </h1>
-                    <p>GPA</p>
+                    <p>CGPA</p>
                   </div>
                 </div>
 
