@@ -66,8 +66,7 @@ function App() {
       performance.getEntriesByType("navigation")[0]?.type === "reload";
 
     if (isReload) {
-      // Ambil path tanpa hash
-      const baseUrl = window.location.origin + "/portofolio/";
+      const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL}`;
       window.location.replace(baseUrl);
     }
   }, []);
