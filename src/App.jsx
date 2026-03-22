@@ -30,20 +30,20 @@ function App() {
     },
     {
       label: "Contact No",
-      value: "+91 XXXXX XXXXX",
-      href: "",
+      value: "+91 9471014833",
+      href: "tel:+919471014833",
       accentClass: "border-white/8 bg-white/[0.045]",
     },
     {
       label: "LinkedIn",
-      value: "linkedin.com/in/your-profile",
-      href: "",
+      value: "linkedin.com/in/kumar-shanu36",
+      href: "https://www.linkedin.com/in/kumar-shanu36/",
       accentClass: "border-white/8 bg-white/[0.045]",
     },
     {
       label: "GitHub",
-      value: "github.com/yourusername",
-      href: "",
+      value: "github.com/KumarShanu36",
+      href: "https://github.com/KumarShanu36",
       accentClass: "border-white/8 bg-white/[0.045]",
     },
   ];
