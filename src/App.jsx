@@ -25,7 +25,7 @@ function App() {
     {
       label: "Email",
       value: "kumarshanu90848@gmail.com",
-      href: "mailto:kumarshanu90848@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=kumarshanu90848@gmail.com",
       accentClass: "border-cyan-400/18 bg-cyan-400/[0.08]",
     },
     {
@@ -221,7 +221,7 @@ function App() {
         </div>
         {/* tentang */}
 
-        <div className="mt-32">
+        <div className="mt-32" id="quotes">
           <QuoteSection />
         </div>
 
@@ -365,12 +365,12 @@ function App() {
                           href={detail.href}
                           target={detail.href.startsWith("http") ? "_blank" : undefined}
                           rel={detail.href.startsWith("http") ? "noreferrer" : undefined}
-                          className="mt-2 block break-all text-sm font-medium leading-6 text-white/90 transition-colors hover:text-cyan-200"
+                          className="mt-2 block overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium leading-6 text-white/90 transition-colors hover:text-cyan-200"
                         >
                           {detail.value}
                         </a>
                       ) : (
-                        <p className="mt-2 break-all text-sm font-medium leading-6 text-white/90">
+                        <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium leading-6 text-white/90">
                           {detail.value}
                         </p>
                       )}

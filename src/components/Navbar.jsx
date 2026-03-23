@@ -1,8 +1,47 @@
 import { useState, useEffect } from "react";
+import {
+  FaInstagram,
+  FaGithub,
+  FaFacebookF,
+  FaLinkedinIn,
+} from "react-icons/fa";
+import { MdCall, MdMail } from "react-icons/md";
 
 const Navbar = ({ hidden = false }) => {
   const [active, setActive] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const contactActions = [
+    {
+      label: "Instagram",
+      href: null,
+      icon: <FaInstagram size={18} />,
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/KumarShanu36",
+      icon: <FaGithub size={18} />,
+    },
+    {
+      label: "Facebook",
+      href: null,
+      icon: <FaFacebookF size={18} />,
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/kumar-shanu36/",
+      icon: <FaLinkedinIn size={18} />,
+    },
+    {
+      label: "Call",
+      href: "tel:+919471014833",
+      icon: <MdCall size={18} />,
+    },
+    {
+      label: "Mail",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=kumarshanu90848@gmail.com",
+      icon: <MdMail size={18} />,
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setActive(window.scrollY > 150);
@@ -97,18 +136,50 @@ const Navbar = ({ hidden = false }) => {
               </div>
             </div>
 
-            <div className="grid gap-8 border-t border-white/0 pt-8 md:grid-cols-1 lg:grid-cols-2 md:gap-10">
-              <div>
-                <p className="mb-3 text-[0.8rem] uppercase tracking-[0.2em] text-white/55">E-MAIL</p>
-                <p className="text-[clamp(1.05rem,1.5vw,1.35rem)] tracking-[0.04em] text-white/88">
-                  kumarshanu90848@gmail.com
+            <div className="pt-8">
+              <div className="max-w-md rounded-[28px] border border-white/10 bg-white/[0.03] px-6 py-6 shadow-[0_22px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl">
+                <p className="mb-2 text-[0.76rem] uppercase tracking-[0.28em] text-cyan-200/70">Connect</p>
+                <h3 className="text-[clamp(1.35rem,2vw,1.9rem)] font-medium tracking-[-0.04em] text-white">
+                  Social & Contact
+                </h3>
+                <p className="mt-2 max-w-sm text-sm leading-6 text-white/58">
+                  Quick access to my professional profiles and direct contact options.
                 </p>
-              </div>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {contactActions.map((item) => {
+                    const classes =
+                      "flex h-12 w-12 items-center justify-center rounded-2xl border border-white/12 bg-white/[0.04] text-white transition-all duration-300";
 
-              <div>
-                <p className="mb-3 text-[0.8rem] uppercase tracking-[0.2em] text-white/55">SOCIAL MEDIA</p>
-                <p className="text-[clamp(0.9rem,1.15vw,1.08rem)] tracking-[0.07em] text-white/88">
-                  [ INSTAGRAM ] [ FACEBOOK ] [ LINKEDIN ] [ GITHUB ]
+                    if (!item.href) {
+                      return (
+                        <span
+                          key={item.label}
+                          title={`${item.label} link not added yet`}
+                          aria-label={`${item.label} link not added yet`}
+                          className={`${classes} cursor-not-allowed border-white/8 bg-white/[0.02] text-white/30`}
+                        >
+                          {item.icon}
+                        </span>
+                      );
+                    }
+
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        aria-label={item.label}
+                        onClick={() => setMenuOpen(false)}
+                        target={item.href.startsWith("http") ? "_blank" : undefined}
+                        rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                        className={`${classes} hover:-translate-y-1 hover:border-cyan-200/40 hover:bg-cyan-300/[0.08] hover:text-cyan-100`}
+                      >
+                        {item.icon}
+                      </a>
+                    );
+                  })}
+                </div>
+                <p className="mt-5 text-xs uppercase tracking-[0.24em] text-white/32">
+                  Call, mail, LinkedIn, and GitHub are active
                 </p>
               </div>
             </div>

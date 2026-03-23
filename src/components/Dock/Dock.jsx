@@ -26,6 +26,7 @@ function DockItem({
   distance,
   magnification,
   baseItemSize,
+  isVisible = true,
 }) {
   const ref = useRef(null);
   const isHovered = useMotionValue(0);
@@ -48,11 +49,25 @@ function DockItem({
   return (
     <motion.div
       ref={ref}
+      animate={{
+        opacity: isVisible ? 1 : 0,
+        marginLeft: isVisible ? 0 : -12,
+        scale: isVisible ? 1 : 0.85,
+      }}
+      transition={{
+        width: { duration: 0.24, ease: "easeOut" },
+        height: { duration: 0.24, ease: "easeOut" },
+        opacity: { duration: 0.18, ease: "easeOut" },
+        marginLeft: { duration: 0.24, ease: "easeOut" },
+        scale: { duration: 0.24, ease: "easeOut" },
+      }}
       style={{
-        width: size,
-        height: size,
+        width: isVisible ? size : 0,
+        height: isVisible ? size : 0,
         position: "relative",
         zIndex: 2,
+        overflow: "hidden",
+        pointerEvents: isVisible ? "auto" : "none",
       }}
       onHoverStart={() => isHovered.set(1)}
       onHoverEnd={() => isHovered.set(0)}
@@ -115,20 +130,64 @@ export default function Dock({
   distance = 200,
   panelHeight = 68,
   baseItemSize = 50,
+  collapsedVisibleCount,
+  collapseDelay = 700,
+  activationPadding = 34,
 }) {
   const mouseX = useMotionValue(Infinity);
-  const isHovered = useMotionValue(0);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const collapseTimeoutRef = useRef(null);
+
+  const openDock = () => {
+    if (collapseTimeoutRef.current) {
+      window.clearTimeout(collapseTimeoutRef.current);
+      collapseTimeoutRef.current = null;
+    }
+    setIsExpanded(true);
+  };
+
+  const scheduleCloseDock = () => {
+    if (!collapsedVisibleCount) {
+      return;
+    }
+    if (collapseTimeoutRef.current) {
+      window.clearTimeout(collapseTimeoutRef.current);
+    }
+    collapseTimeoutRef.current = window.setTimeout(() => {
+      setIsExpanded(false);
+      mouseX.set(Infinity);
+    }, collapseDelay);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (collapseTimeoutRef.current) {
+        window.clearTimeout(collapseTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <motion.div className="dock-outer" style={{ overflow: "visible" }}>
+    <motion.div
+      className="dock-outer"
+      style={{
+        overflow: "visible",
+        padding: `${activationPadding}px`,
+        margin: `-${activationPadding}px`,
+      }}
+      onMouseEnter={openDock}
+      onMouseLeave={scheduleCloseDock}
+      onFocusCapture={openDock}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          scheduleCloseDock();
+        }
+      }}
+    >
       <motion.div
         onMouseMove={({ pageX }) => {
-          isHovered.set(1);
+          openDock();
           mouseX.set(pageX);
-        }}
-        onMouseLeave={() => {
-          isHovered.set(0);
-          mouseX.set(Infinity);
         }}
         className={`dock-panel ${className}`}
         style={{
@@ -139,7 +198,7 @@ export default function Dock({
       >
         {items.map((item, index) => (
           <DockItem
-            key={index}
+            key={item.label ?? index}
             onClick={item.onClick}
             className={item.className}
             mouseX={mouseX}
@@ -147,6 +206,7 @@ export default function Dock({
             distance={distance}
             magnification={magnification}
             baseItemSize={baseItemSize}
+            isVisible={!collapsedVisibleCount || isExpanded || index < collapsedVisibleCount}
           >
             <DockIcon>{item.icon}</DockIcon>
             <DockLabel>{item.label}</DockLabel>
