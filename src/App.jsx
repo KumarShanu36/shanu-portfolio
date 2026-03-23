@@ -144,7 +144,7 @@ function App() {
                 </h2>
 
                 <BlurText
-                  text="I’m Kumar Shanu, a full-stack developer passionate about building modern, high-performance applications with an intuitive user experience. I enjoy working with the latest technologies like Artificial Intelligence, Machine Learning, and cloud-based development, blending creativity with precision to deliver impactful solutions. With over three years of experience and more than 20 completed projects, I’m committed to helping users and businesses grow in the digital era through functional, aesthetic, and scalable digital products."
+                  text="I’m Kumar Shanu, a full-stack developer passionate about building modern, high-performance applications with an intuitive user experience. I enjoy working with the latest technologies like Artificial Intelligence, Machine Learning, and cloud-based development, blending creativity with precision to deliver impactful solutions. With over three years of experience and more than 5 completed projects, I’m committed to helping users and businesses grow in the digital era through functional, aesthetic, and scalable digital products."
                   delay={150}
                   animateBy="words"
                   direction="top"
@@ -166,9 +166,9 @@ function App() {
                   </div>
                   <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-once="true">
                     <h1 className="text-3xl md:text-4xl mb-1">
-                      6.22<span className="text-violet-500"> CGPA</span>
+                      Full<span className="text-violet-500"> Stack</span>
                     </h1>
-                    <p>CGPA</p>
+                    <p>Developer</p>
                   </div>
                 </div>
 
@@ -324,14 +324,14 @@ function App() {
 
         {/* Kontak */}
         <div className="kontak relative left-1/2 mt-32 w-screen -translate-x-1/2" id="contact">
-          <div className="relative min-h-screen overflow-hidden bg-[#1d1d22]">
+          <div className="relative min-h-[82svh] overflow-hidden bg-[#1d1d22]">
             <div className="absolute inset-0">
               <ContactGlobe />
             </div>
 
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(29,29,34,0.88)_0%,rgba(26,26,31,0.68)_16%,rgba(16,19,31,0.28)_42%,rgba(11,13,20,0.08)_100%),radial-gradient(circle_at_top_left,rgba(87,120,112,0.08),transparent_24%),radial-gradient(circle_at_top_right,rgba(31,151,166,0.1),transparent_24%),linear-gradient(90deg,rgba(11,13,20,0.4)_0%,rgba(11,13,20,0.16)_34%,rgba(11,13,20,0.02)_64%,rgba(11,13,20,0.08)_100%)]" />
 
-            <div className="relative mx-auto flex min-h-screen w-full max-w-[1500px] items-center px-6 py-12 md:px-12 lg:px-20">
+            <div className="relative mx-auto flex min-h-[82svh] w-full max-w-[1500px] items-center px-6 py-9 md:px-12 lg:px-20">
               <form
                 action="https://formsubmit.co/kumarshanu90848@gmail.com"
                 method="POST"
