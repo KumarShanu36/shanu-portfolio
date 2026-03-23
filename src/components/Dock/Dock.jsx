@@ -66,7 +66,7 @@ function DockItem({
         height: isVisible ? size : 0,
         position: "relative",
         zIndex: 2,
-        overflow: "hidden",
+        overflow: "visible",
         pointerEvents: isVisible ? "auto" : "none",
       }}
       onHoverStart={() => isHovered.set(1)}
