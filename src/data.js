@@ -221,7 +221,7 @@ export const listCertificates = [
     issuer: "Cipher Schools",
     year: "Completed",
     summary: "Training in C++ programming and object-oriented design principles for structured software development.",
-    link: "",
+    link: "/assets/certificates/cpp-with-oops.pdf",
   },
   {
     id: 3,
@@ -229,7 +229,7 @@ export const listCertificates = [
     issuer: "Infosys",
     year: "Completed",
     summary: "Covered generative AI fundamentals and practical use of tools such as ChatGPT for real-world workflows.",
-    link: "",
+    link: "/assets/certificates/master-generative-ai.pdf",
   },
   {
     id: 4,
@@ -237,7 +237,7 @@ export const listCertificates = [
     issuer: "Infosys",
     year: "Completed",
     summary: "Focused on formal languages, language principles, and finite automata theory in computation.",
-    link: "",
+    link: "/assets/certificates/computational-theory.pdf",
   },
   {
     id: 5,
@@ -245,7 +245,7 @@ export const listCertificates = [
     issuer: "Infosys",
     year: "Completed",
     summary: "Explored prompt engineering techniques for ChatGPT, generative AI systems, and large language models.",
-    link: "",
+    link: "/assets/certificates/chatgpt-4-prompt-engineering.pdf",
   },
   {
     id: 6,
@@ -253,7 +253,7 @@ export const listCertificates = [
     issuer: "Infosys",
     year: "Completed",
     summary: "Learned how to create generative AI applications and workflows using no-code development tools.",
-    link: "",
+    link: "/assets/certificates/build-generative-ai-no-code.pdf",
   },
   {
     id: 7,
@@ -261,7 +261,7 @@ export const listCertificates = [
     issuer: "Coursera",
     year: "Completed",
     summary: "Studied the fundamentals of computer communication systems and how data moves across connected networks.",
-    link: "",
+    link: "/assets/certificates/computer-communications.pdf",
   },
   {
     id: 8,
@@ -269,7 +269,7 @@ export const listCertificates = [
     issuer: "Coursera",
     year: "Completed",
     summary: "Covered networking basics including protocols, routing, addressing, and common communication models.",
-    link: "",
+    link: "/assets/certificates/bits-and-bytes-networking.pdf",
   },
   {
     id: 9,
@@ -277,7 +277,7 @@ export const listCertificates = [
     issuer: "Coursera",
     year: "Completed",
     summary: "Built foundational understanding of computer hardware, operating systems, and system-level computing concepts.",
-    link: "",
+    link: "/assets/certificates/hardware-and-operating-systems.pdf",
   },
   {
     id: 10,
@@ -285,7 +285,7 @@ export const listCertificates = [
     issuer: "Coursera",
     year: "Completed",
     summary: "Focused on essential principles of network communication, transmission methods, and network architecture.",
-    link: "",
+    link: "/assets/certificates/fundamentals-of-network-communication.pdf",
   },
   {
     id: 11,
@@ -293,7 +293,7 @@ export const listCertificates = [
     issuer: "Coursera",
     year: "Completed",
     summary: "Explored packet-switched networks, routing behavior, and algorithms used in modern communication systems.",
-    link: "",
+    link: "/assets/certificates/packet-switching-networks-and-algorithms.pdf",
   },
   {
     id: 12,
@@ -301,6 +301,6 @@ export const listCertificates = [
     issuer: "Cipher Schools",
     year: "Completed",
     summary: "Learned version control workflows, repository management, branching, and collaboration using Git and GitHub.",
-    link: "",
+    link: "/assets/certificates/git-and-github.pdf",
   },
 ];

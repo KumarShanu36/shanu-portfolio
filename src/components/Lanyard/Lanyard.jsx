@@ -15,7 +15,13 @@ import './Lanyard.css';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], fov = 20, transparent = true }) {
+export default function Lanyard({
+  position = [0, 0, 30],
+  gravity = [0, -40, 0],
+  fov = 20,
+  transparent = true,
+  autoSwing = true,
+}) {
   return (
     <div className="lanyard-wrapper">
       <Canvas
@@ -25,7 +31,7 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={1 / 60}>
-          <Band />
+          <Band autoSwing={autoSwing} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
@@ -37,7 +43,7 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
     </div>
   );
 }
-function Band({ maxSpeed = 50, minSpeed = 0 }) {
+function Band({ maxSpeed = 50, minSpeed = 0, autoSwing = true }) {
   const band = useRef(), fixed = useRef(), j1 = useRef(), j2 = useRef(), j3 = useRef(), card = useRef();
   const vec = new THREE.Vector3(), ang = new THREE.Vector3(), rot = new THREE.Vector3(), dir = new THREE.Vector3();
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
@@ -80,6 +86,18 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
       [card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp());
       card.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z });
     }
+
+    if (!dragged && autoSwing && card.current) {
+      const time = state.clock.getElapsedTime();
+      const impulseX = Math.sin(time * 1.15) * delta * 0.35;
+      const impulseY = Math.cos(time * 0.9) * delta * 0.12;
+      const torqueZ = Math.cos(time * 1.4) * delta * 0.08;
+
+      [card, j1, j2, j3].forEach((ref) => ref.current?.wakeUp());
+      card.current.applyImpulse({ x: impulseX, y: impulseY, z: 0 }, true);
+      card.current.applyTorqueImpulse({ x: 0, y: 0, z: torqueZ }, true);
+    }
+
     if (fixed.current) {
       [j1, j2].forEach((ref) => {
         if (!ref.current.lerped) ref.current.lerped = new THREE.Vector3().copy(ref.current.translation());
