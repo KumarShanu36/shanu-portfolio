@@ -213,7 +213,7 @@ export const listCertificates = [
     issuer: "NPTEL",
     year: "Completed",
     summary: "Coursework focused on cloud computing concepts, service models, and practical infrastructure fundamentals.",
-    link: "",
+    link: "/assets/certificates/cloud-computing.pdf",
   },
   {
     id: 2,
