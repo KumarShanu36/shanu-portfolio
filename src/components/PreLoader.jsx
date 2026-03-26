@@ -1,18 +1,34 @@
 import Aurora from "./Aurora/Aurora"
 import { useState, useEffect } from "react"
-import CountUp from "./CountUp/CountUp"
 
 const PreLoader = () => {
   const [loading, setLoading] = useState(true)
+  const [progress, setProgress] = useState(0)
   const [countDone, setCountDone] = useState(false)
   const [fadeText, setFadeText] = useState(false)
   const [fadeScreen, setFadeScreen] = useState(false)
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((current) => {
+        if (current >= 100) {
+          clearInterval(interval)
+          setCountDone(true)
+          return 100
+        }
+
+        return current + 1
+      })
+    }, 18)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
     if (countDone) {
-      const fadeTextTimer = setTimeout(() => setFadeText(true), 3000)
-      const fadeScreenTimer = setTimeout(() => setFadeScreen(true), 2000)
-      const hideTimer = setTimeout(() => setLoading(false), 3000)
+      const fadeTextTimer = setTimeout(() => setFadeText(true), 1400)
+      const fadeScreenTimer = setTimeout(() => setFadeScreen(true), 900)
+      const hideTimer = setTimeout(() => setLoading(false), 1600)
 
       return () => {
         clearTimeout(fadeTextTimer)
@@ -36,19 +52,33 @@ const PreLoader = () => {
           speed={0.5}
         />
         <div
-          className={`absolute text-white text-6xl font-bold transition-all duration-1000 ${
+          className={`preloader-hud absolute transition-all duration-700 ${
             fadeText ? "opacity-0 -translate-y-10" : "opacity-100 translate-y-0"
           }`}
         >
-          <CountUp
-            from={0}
-            to={100}
-            separator=","
-            direction="up"
-            duration={1}
-            className="count-up-text"
-            onEnd={() => setCountDone(true)}
-          />
+          <div className="preloader-shell">
+            <div
+              className="preloader-ring"
+              style={{
+                background: `conic-gradient(#38f8ff ${progress * 3.6}deg, rgba(56, 248, 255, 0.16) ${progress * 3.6}deg 360deg)`,
+              }}
+            >
+              <div className="preloader-ring-inner">
+                <span className="preloader-percent">{progress}%</span>
+              </div>
+            </div>
+
+            <div className="preloader-bar-panel">
+              <div className="preloader-bar-head" />
+              <div className="preloader-bar-track">
+                <div
+                  className="preloader-bar-fill"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+              <p className="preloader-label">LOADING...</p>
+            </div>
+          </div>
         </div>
       </div>
     )
