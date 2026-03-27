@@ -294,7 +294,7 @@
 .pc-details {
   width: 100%;
   position: absolute;
-  top: 1.5em;
+  top: 1.1em;
   display: flex;
   flex-direction: column;
 }
@@ -302,7 +302,7 @@
 .pc-details h3 {
   font-weight: 600;
   margin: 0;
-  font-size: min(4.4svh, 2.65em);
+  font-size: min(4.1svh, 2.5em);
   margin: 0;
   background-image: linear-gradient(to bottom, #fff, #6f6fbe);
   background-size: 1em 1.5em;
@@ -314,7 +314,7 @@
 .pc-details p {
   font-weight: 600;
   position: relative;
-  top: -12px;
+  top: -14px;
   white-space: nowrap;
   font-size: 16px;
   margin: 0 auto;

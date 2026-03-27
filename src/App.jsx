@@ -125,7 +125,7 @@ function App() {
               handle="kumarshanu"
               status="Online"
               contactText="Contact Me"
-              avatarUrl="./assets/faris.png"
+              avatarUrl="./assets/new-profile.png"
               showUserInfo={true}
               enableTilt={true}
               enableMobileTilt={false}
