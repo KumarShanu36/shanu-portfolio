@@ -28,7 +28,7 @@ Built using **React + Vite**, this project showcases my skills, projects, and pa
 
 ## 🌍 Live Demo
 
-👉 [https://your-live-link.com](https://kumarshanu-portfolio.vercel.app/)
+👉 [https://kumarshanu-portfolio.vercel.app/](https://kumarshanu-portfolio.vercel.app/)
 
 ---
 
@@ -63,7 +63,7 @@ npm run build
 
 ## 👨‍💻 About Me
 
-Hi, I’m **[Your Name]** 👋
+Hi, I’m **Kumar Shanu** 👋
 A passionate developer focused on building **fast, modern, and user-friendly web applications**.
 
 * ⚛️ React & modern frontend technologies
@@ -74,9 +74,8 @@ A passionate developer focused on building **fast, modern, and user-friendly web
 
 ## 📬 Contact Me
 
-* 📧 Email: [your_email@example.com](mailto:your_email@example.com)
-* 💼 LinkedIn: https://linkedin.com/in/yourprofile
-* 📸 Instagram: @yourusername
+* 📧 Email: [kumarshanu90848@gmail.com](mailto:kumarshanu90848@gmail.com)
+* 💼 LinkedIn: [https://www.linkedin.com/in/kumar-shanu36/](https://www.linkedin.com/in/kumar-shanu36/)
 
 ---
 
